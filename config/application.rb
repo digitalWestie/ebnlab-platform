@@ -26,6 +26,9 @@ module EBNLab
     # Set Sidekiq as the back-end for Active Job.
     config.active_job.queue_adapter = :sidekiq
 
+    config.action_mailer.default_url_options = { host: ENV['BASE_URL'] }
+    config.action_mailer.default_options = { from: ENV['ADMIN_EMAIL'] }
+
     # Mount Action Cable outside the main process or domain.
     config.action_cable.mount_path = nil
     config.action_cable.url = ENV.fetch("ACTION_CABLE_FRONTEND_URL") { "ws://localhost:28080" }

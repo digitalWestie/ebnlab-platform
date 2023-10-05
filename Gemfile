@@ -45,6 +45,13 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Execute jobs in the background [https://github.com/mperham/sidekiq]
 gem "sidekiq", "~> 7.1"
 
+# For users and auth
+gem "devise", "~> 4.9"
+
+# For change tracking
+gem "paper_trail", "~> 15.0"
+
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
