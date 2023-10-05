@@ -1,5 +1,5 @@
 class ProblemsController < ApplicationController
-  before_action :set_problem, only: %i[ show edit update destroy ]
+  before_action :set_problem, only: %i[ show edit update destroy versions ]
   before_action :authenticate_user!, except: []
 
   # GET /problems or /problems.json
@@ -22,7 +22,7 @@ class ProblemsController < ApplicationController
 
   # POST /problems or /problems.json
   def create
-    @problem = Problem.new(problem_params.merge(user_id: current_user.id))
+    @problem = Problem.new(problem_params)
 
     respond_to do |format|
       if @problem.save
@@ -38,7 +38,7 @@ class ProblemsController < ApplicationController
   # PATCH/PUT /problems/1 or /problems/1.json
   def update
     respond_to do |format|
-      if @problem.update(problem_params.merge(user_id: current_user.id))
+      if @problem.update(problem_params)
         format.html { redirect_to problem_url(@problem), notice: "Problem was successfully updated." }
         format.json { render :show, status: :ok, location: @problem }
       else
@@ -56,6 +56,10 @@ class ProblemsController < ApplicationController
       format.html { redirect_to problems_url, notice: "Problem was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def versions
+    @problems = @problem.versions
   end
 
   private

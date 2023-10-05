@@ -4,7 +4,8 @@
 
 <div>
   <%= link_to "Edit this problem", edit_problem_path(@problem) %> |
-  <%= link_to "Back to problems", problems_path %>
+  <%= link_to "Back to problems", problems_path %> |
+  <%= link_to "Show versions", versions_problem_path(@problem) %> |
 
   <%= button_to "Destroy this problem", @problem, method: :delete %>
 </div>

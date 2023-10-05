@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :problems
+
+  resources :problems do
+    member { get "versions", to: "problems#versions", as: :versions }
+  end
+
   devise_for :users
   root to: "pages#home"
 

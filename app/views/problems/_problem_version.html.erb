@@ -1,0 +1,6 @@
+<% unless problem.try(:event) && problem.event == "create" %>
+  <tr>
+    <td><%= problem.try(:reify) ? problem.reify.name : problem.name %></td>
+    <td><%= problem.try(:reify)  ? problem.reify.body : problem.body %></td>
+  </tr>
+<% end %>
