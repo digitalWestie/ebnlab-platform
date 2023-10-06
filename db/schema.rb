@@ -10,15 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_05_145811) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_06_105248) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "problems", force: :cascade do |t|
+  create_table "organisations", force: :cascade do |t|
     t.string "name"
-    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "outcomes", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.integer "confidence"
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_outcomes_on_project_id"
+  end
+
+  create_table "populations", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.integer "confidence"
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_populations_on_project_id"
+  end
+
+  create_table "problems", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "project_id", null: false
+    t.integer "confidence"
+    t.index ["project_id"], name: "index_problems_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.text "scope"
+    t.bigint "organisation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organisation_id"], name: "index_projects_on_organisation_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,4 +82,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_05_145811) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "outcomes", "projects"
+  add_foreign_key "populations", "projects"
+  add_foreign_key "problems", "projects"
+  add_foreign_key "projects", "organisations"
 end

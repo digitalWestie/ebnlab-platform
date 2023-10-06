@@ -1,4 +1,4 @@
-class Problem < ApplicationRecord
+class Population < ApplicationRecord
   has_paper_trail
 
   belongs_to :project
