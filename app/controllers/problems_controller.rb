@@ -23,10 +23,8 @@ class ProblemsController < ApplicationController
     respond_to do |format|
       if @problem.save
         format.html { redirect_to project_problem_url(@project, @problem), notice: "Problem was successfully created." }
-        format.json { render :show, status: :created, location: @problem }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @problem.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -35,10 +33,8 @@ class ProblemsController < ApplicationController
     respond_to do |format|
       if @problem.update(problem_params)
         format.html { redirect_to project_problem_url(@project, @problem), notice: "Problem was successfully updated." }
-        format.json { render :show, status: :ok, location: @problem }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @problem.errors, status: :unprocessable_entity }
       end
     end
   end
