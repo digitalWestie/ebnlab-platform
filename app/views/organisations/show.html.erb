@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @organisation %>
+<h1 class="text-4xl mb-10">Organisations</h1>
+<h2><%= @organisation.name %></h2>
 
 <div>
   <%= link_to "Edit this organisation", edit_organisation_path(@organisation) %> |
   <%= link_to "Back to organisations", organisations_path %>
-
-  <%= button_to "Destroy this organisation", @organisation, method: :delete %>
+  <%= button_to "Delete this organisation", @organisation, method: :delete %>
 </div>

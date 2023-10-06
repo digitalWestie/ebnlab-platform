@@ -9,56 +9,33 @@
   <p class="text-lg mb-6">Large text which is what I need. I need a computer said johnny.</p>
   <p class="base-text mb-6">Base text, and stuff. I need a computer said johnny.</p>
 
-  <hr class=" my-6" />
+  <hr class="my-6" />
 
   <h2 class="text-3xl mb-6">Colours</h2>
+  <p>Indigo, Orange, Emerald</p>
+  <div class="px-1 inline-block w-20 h-12 bg-indigo-600"></div>
+  <div class="px-1 inline-block w-20 h-12 bg-orange-600"></div>
+  <div class="px-1 inline-block w-20 h-12 bg-emerald-600"></div>
 
-  <div id="bg-colours" class="mb-3">
-    <div class="px-1 inline-block w-20 h-12 bg-red-600">red-600</div>
-    <div class="px-1 inline-block w-20 h-12 bg-orange-600">orange-600</div>
-    <div class="px-1 inline-block w-20 h-12 bg-yellow-600" >yellow-600</div>
-    <div class="px-1 inline-block w-20 h-12 bg-teal-600" >teal</div>
-    <div class="px-1 inline-block w-20 h-12 bg-teal-800" >dark-teal</div>
-    <div class="px-1 inline-block w-20 h-12 border bg-amber-50">amber-50</div>
-  </div>
-
-  <div class="mb-3 text-white">
-    <div class="px-1 inline-block w-20 h-12 bg-red-600">red-600</div>
-    <div class="px-1 inline-block w-20 h-12 bg-orange-600" >orange-600</div>
-    <div class="px-1 inline-block w-20 h-12 bg-yellow-600" >yellow-600</div>
-    <div class="px-1 inline-block w-20 h-12 bg-teal-600" >teal</div>
-    <div class="px-1 inline-block w-20 h-12 bg-teal-800" >dark-teal</div>
-    <div class="px-1 inline-block w-20 h-12 border bg-amber-50">amber-50</div>
-  </div>
-
-  <div id="text-colours" class="mb-3 ">
-    <div class="px-1 inline-block w-20 h-12 text-gray-900">gray</div>
-    <div class="px-1 inline-block w-20 h-12 text-red-600">red-600</div>
-    <div class="px-1 inline-block w-20 h-12 text-orange-600" >orange-600</div>
-    <div class="px-1 inline-block w-20 h-12 text-yellow-600" >yellow-600</div>
-    <div class="px-1 inline-block w-20 h-12 text-teal-900" >teal</div>
-    <div class="px-1 inline-block w-20 h-12 bg-gray-900 text-amber-50 border">amber-50</div>
-    <div class="px-1 inline-block w-20 h-12 bg-gray-900 text-white border">white</div><br/>
-    <div class="px-1 inline-block w-20 h-12 text-teal-900">txteal</div>
-  </div>
 
   <hr class=" my-6" />
 
   <h2 class="text-3xl mb-6">Buttons</h2>
-
-  <div class="grid grid-cols-2">
-    <div class="">
-      <%= button_to 'Small button', '#',  class: "mb-6 rounded-md py-1 px-2 bg-yellow-600 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600" %>
-      <%= button_to 'Medium button', '#', class: "mb-6 rounded-md py-3 px-3 bg-teal text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600" %>
-      <%= button_to 'Large button', '#',  class: "mb-6 rounded-md py-3 px-6 bg-orange-600 text-xl font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600" %>
+    <p>Large</p>
+    <div class="grid grid-cols-4 gap-8">
+      <%= link_to "#", class: "inline-block w-content border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline flex flex-row items-center" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-1 inline-block">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg><span>Add new organisation</span>
+      <% end %>
     </div>
 
-    <div class="">
-      <%= button_to 'Small button', '#',  class: "mb-6 rounded-md py-1 px-2 text-base bg-red-600 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600" %>
-      <%= button_to 'Large button', '#',  class: "mb-6 rounded-md py-3 px-6 text-xl bg-teal-800 text-white font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600" %>
-      <%= button_to 'Medium button', '#', class: "mb-6 rounded-md py-3 px-3 text-lg bg-orange-600 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600" %>
-    </div>
+    <br/>
+
+    <p>Small</p>
+    <%= link_to "View", "#", class: "px-2 py-1 rounded cursor-pointer bg-emerald-100 text-emerald-900" %>
   </div>
+
 
   <hr class=" my-6" />
   <h2 class="text-3xl mb-6">Inputs</h2>

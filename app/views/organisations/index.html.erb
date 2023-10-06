@@ -1,14 +1,29 @@
-<p style="color: green"><%= notice %></p>
+<div class="flex flex-row justify-between mb-10">
+  <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-6xl mr-6">Organisations</h1>
 
-<h1>Organisations</h1>
-
-<div id="organisations">
-  <% @organisations.each do |organisation| %>
-    <%= render organisation %>
-    <p>
-      <%= link_to "Show this organisation", organisation %>
-    </p>
+  <%= link_to new_organisation_path, class: "inline-block border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline flex flex-row items-center" do %>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-1 inline-block">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+    </svg><span>Add new organisation</span>
   <% end %>
 </div>
 
-<%= link_to "New organisation", new_organisation_path %>
+<table class="table-fixed bg-white border-collapse">
+  <thead>
+    <tr>
+      <th class="bg-indigo-100 border text-left px-8 py-4">Name</th>
+      <th class="bg-indigo-100 border text-left px-8 py-4">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @organisations.each do |organisation| %>
+      <tr class="hover:bg-gray-50 focus:bg-gray-300 active:bg-red-200"
+    tabindex="0">
+        <td class="border px-8 py-4"><%= organisation.name %></td>
+        <td class="border px-8 py-4">
+          <%= link_to "View", organisation, class: "px-2 py-1 cursor-pointer text-indigo-800 hover:underline" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

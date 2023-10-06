@@ -5,7 +5,6 @@ class ProblemTest < ActiveSupport::TestCase
     project = projects(:one)
     problem = Problem.new(project: project, confidence: 1, name: "my problem", description: "it's a big one")
     problem.save()
-    puts problem.errors.messages
     assert problem.valid?
   end
 end
