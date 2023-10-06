@@ -1,7 +1,7 @@
 <div class="flex flex-row justify-between mb-10">
-  <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-6xl mr-6">Organisations</h1>
+  <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mr-6">Organisations</h1>
 
-  <%= link_to new_organisation_path, class: "inline-block border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline flex flex-row items-center" do %>
+  <%= link_to new_organisation_path, class: "inline-block border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:shadow-outline flex flex-row items-center" do %>
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-1 inline-block">
       <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
     </svg><span>Add new organisation</span>
@@ -21,7 +21,8 @@
     tabindex="0">
         <td class="border px-8 py-4"><%= organisation.name %></td>
         <td class="border px-8 py-4">
-          <%= link_to "View", organisation, class: "px-2 py-1 cursor-pointer text-indigo-800 hover:underline" %>
+          <%= link_to "View", organisation, class: "mr-2 cursor-pointer text-indigo-800 hover:underline" %>
+          <%= link_to "Edit", edit_organisation_path(organisation), class: "mr-2 cursor-pointer text-orange-800 hover:underline" %>
         </td>
       </tr>
     <% end %>

@@ -1,9 +1,9 @@
 <%= form_with(model: organisation) do |form| %>
   <% if organisation.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(organisation.errors.count, "error") %> prohibited this organisation from being saved:</h2>
+    <div class="mb-8 w-fit px-8 py-4 bg-red-100 text-red-900 border rounded border-red-900">
+      <h2 class="font-bold"><%= pluralize(organisation.errors.count, "error") %> prohibited this organisation from being saved:</h2>
 
-      <ul>
+      <ul class="list-disc px-4">
         <% organisation.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="mb-8">
+    <%= form.label :name, class: "block font-bold py-2" %>
+    <%= form.text_field :name, class: "mb-6 px-4 py-3 w-full border border-indigo-200 rounded-md ring-0 ring-offset-1 outline-0 outline-none ring-indigo-200 focus:ring-1 focus:border-indigo-600" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Save organisation", class: "cursor-pointer inline-block border border-emerald-600 bg-emerald-600 text-white rounded-md px-4 py-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:shadow-outline" %>
   </div>
 <% end %>

@@ -1,10 +1,10 @@
-<h1>Editing organisation</h1>
+<div class="flex flex-row justify-between mb-10">
+  <h1 class="opacity-20 text-2xl sm:text-3xl md:text-4xl lg:text-5xl mr-6">Edit organisation</h1>
+</div>
 
 <%= render "form", organisation: @organisation %>
 
-<br>
-
-<div>
-  <%= link_to "Show this organisation", @organisation %> |
-  <%= link_to "Back to organisations", organisations_path %>
-</div>
+<br/>
+<%= link_to organisations_path, class: "mr-2 cursor-pointer text-indigo-800 hover:underline" do %>
+  Back to organisations
+<% end %>
