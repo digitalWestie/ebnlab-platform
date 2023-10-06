@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :organisations do
-    resources :projectss
+    resources :projects
   end
 
   resources :projects, only: [] do

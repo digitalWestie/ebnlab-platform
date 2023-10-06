@@ -1,0 +1,11 @@
+<div class="flex flex-row justify-between mb-10">
+  <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mr-6">New project</h1>
+</div>
+
+<%= render "form", project: @project %>
+
+<hr class="my-8"/>
+
+<%= link_to organisation_path(@organisation), class: "mr-2 cursor-pointer text-indigo-800 hover:underline" do %>
+  Back to organisation
+<% end %>

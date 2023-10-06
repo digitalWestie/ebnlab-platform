@@ -9,12 +9,10 @@ class OrganisationsController < ApplicationController
   def show
   end
 
-  # GET /organisations/new
   def new
     @organisation = Organisation.new
   end
 
-  # GET /organisations/1/edit
   def edit
   end
 

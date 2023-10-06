@@ -1,0 +1,10 @@
+<h1>Editing project</h1>
+
+<%= render "form", project: @project %>
+
+<br>
+
+<div>
+  <%= link_to "Show this project", [@organisation, @project] %> |
+  <%= link_to "Back to projects", organisation_projects_path(@organisation) %>
+</div>

@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: []
 
   def index
-    @projects = @organisation.projects.all
+    redirect_to organisation_url(@organisation)
   end
 
   def show
