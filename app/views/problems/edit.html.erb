@@ -5,6 +5,6 @@
 <br>
 
 <div>
-  <%= link_to "Show this problem", @problem %> |
-  <%= link_to "Back to problems", problems_path %>
+  <%= link_to "Show this problem", [@project, @problem] %> |
+  <%= link_to "Back to problems", project_problems_path(@project) %>
 </div>

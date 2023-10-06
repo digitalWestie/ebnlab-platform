@@ -6,9 +6,9 @@
   <% @problems.each do |problem| %>
     <%= render problem %>
     <p>
-      <%= link_to "Show this problem", problem %>
+      <%= link_to "Show this problem", project_problem_path(@project, problem) %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New problem", new_problem_path %>
+<%= link_to "New problem", new_project_problem_path(@project) %>

@@ -3,18 +3,19 @@ require "application_system_test_case"
 class ProblemsTest < ApplicationSystemTestCase
   setup do
     @problem = problems(:one)
+    @project = @problem.project
   end
 
   test "visiting the index" do
-    visit problems_url
+    visit project_problems_url(@project)
     assert_selector "h1", text: "Problems"
   end
 
   test "should create problem" do
-    visit problems_url
+    visit project_problems_url(@project)
     click_on "New problem"
 
-    fill_in "Body", with: @problem.body
+    fill_in "description", with: @problem.description
     fill_in "Name", with: @problem.name
     click_on "Create Problem"
 
@@ -23,10 +24,10 @@ class ProblemsTest < ApplicationSystemTestCase
   end
 
   test "should update Problem" do
-    visit problem_url(@problem)
+    visit project_problem_url(@project, @problem)
     click_on "Edit this problem", match: :first
 
-    fill_in "Body", with: @problem.body
+    fill_in "description", with: @problem.description
     fill_in "Name", with: @problem.name
     click_on "Update Problem"
 
@@ -35,7 +36,7 @@ class ProblemsTest < ApplicationSystemTestCase
   end
 
   test "should destroy Problem" do
-    visit problem_url(@problem)
+    visit project_problem_url(@project, @problem)
     click_on "Destroy this problem", match: :first
 
     assert_text "Problem was successfully destroyed"

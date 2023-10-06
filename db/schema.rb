@@ -10,9 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_06_105248) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_06_111509) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "evidence_items", force: :cascade do |t|
+    t.string "name"
+    t.text "highlight"
+    t.text "relevance"
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "evidence_links", force: :cascade do |t|
+    t.string "evidenceable_type", null: false
+    t.bigint "evidenceable_id", null: false
+    t.bigint "evidence_item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["evidence_item_id"], name: "index_evidence_links_on_evidence_item_id"
+    t.index ["evidenceable_type", "evidenceable_id"], name: "index_evidence_links_on_evidenceable"
+  end
 
   create_table "organisations", force: :cascade do |t|
     t.string "name"
@@ -82,6 +101,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_105248) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "evidence_links", "evidence_items"
   add_foreign_key "outcomes", "projects"
   add_foreign_key "populations", "projects"
   add_foreign_key "problems", "projects"

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :problems do
+  resources :projects, only: [:index, :show] do
+    resources :problems
+  end
+
+  resources :problems, only: [] do
     member { get "versions", to: "problems#versions", as: :versions }
   end
 
