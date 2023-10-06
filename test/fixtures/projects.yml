@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  scope: MyText
+  scope_description: MyText
   organisation: one
 
 two:
   name: MyString
-  scope: MyText
+  scope_description: MyText
   organisation: two
