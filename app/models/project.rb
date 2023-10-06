@@ -5,4 +5,9 @@ class Project < ApplicationRecord
   has_many :outcomes, dependent: :destroy
 
   validates :name, presence: true
+
+  def evidence_items
+    #TODO a select that returns evidence items across the project
+    nil
+  end
 end
