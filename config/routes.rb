@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :projects, only: [:index, :show] do
+  resources :organisations do
+    resources :projectss
+  end
+
+  resources :projects, only: [] do
     resources :problems
   end
 
