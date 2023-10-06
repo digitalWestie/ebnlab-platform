@@ -11,6 +11,16 @@
 </div>
 
 <div>
+  <h3 class="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6">Projects</h3>
+  <% if @organisation.projects.blank? %><p><em>No projects found for this oranisation</em></p><% end %>
+  <% for project in @organisation.projects %>
+    <p><%= link_to project.name, [@organisation, project], class: "mr-2 cursor-pointer text-indigo-800 hover:underline" %></p>
+  <% end %>
+</div>
+
+<hr class="my-8"/>
+
+<div>
   <%= link_to "Edit this organisation", edit_organisation_path(@organisation), class: "mr-2 cursor-pointer text-indigo-800 hover:underline" %> |
   <%= link_to "Back to organisations", organisations_path, class: "mr-2 cursor-pointer text-indigo-800 hover:underline" %>
 </div>
