@@ -42,7 +42,7 @@ class OrganisationsController < ApplicationController
     @organisation.destroy
 
     respond_to do |format|
-      format.html { redirect_to organisations_url, notice: "Organisation was successfully destroyed." }
+      format.html { redirect_to organisations_url, notice: "Organisation was successfully deleted." }
     end
   end
 

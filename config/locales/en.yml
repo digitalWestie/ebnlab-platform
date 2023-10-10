@@ -30,4 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  ebn_lab: "EBNLab!"
+  ebn_lab: "EBN Lab"
+  activerecord:
+    attributes:
+      project:
+        scope_description: "Scope"

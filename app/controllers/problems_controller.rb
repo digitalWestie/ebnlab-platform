@@ -43,7 +43,7 @@ class ProblemsController < ApplicationController
     @problem.destroy
 
     respond_to do |format|
-      format.html { redirect_to project_problems_url(@project), notice: "Problem was successfully destroyed." }
+      format.html { redirect_to project_problems_url(@project), notice: "Problem was successfully removed." }
       format.json { head :no_content }
     end
   end
