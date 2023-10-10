@@ -14,37 +14,38 @@
 <div>
   <h3 class="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6">User accounts</h3>
 
-  <table class="w-full sm:w-10/12 table-fixed bg-white border-collapse">
-    <thead>
-      <tr>
-        <th class="bg-indigo-100 border text-left px-8 py-4">Email</th>
-        <th class="bg-indigo-100 border text-left px-8 py-4">Role</th>
-        <th class="bg-indigo-100 border text-left px-8 py-4">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% for assignment in @assignments %>
-        <tr class="hover:bg-gray-50 focus:bg-gray-100"
-      tabindex="0">
-          <td class="w-4/12 border px-8 py-4"><%= assignment.user.email %></td>
-          <td class="w-4/12 border px-8 py-4"><%= t("roles.#{assignment.role}") %></td>
-          <td class="w-4/12 border px-8 py-4">
-            <%= button_to assignment_path(assignment), method: :delete, form: { data: { turbo_confirm: "Are you sure you want to remove #{assignment.user.email} from your organisation?" } }, form_class: "inline-block", class: "inline-block mr-2 cursor-pointer px-2 py-1 rounded bg-red-100 text-red-800 hover:bg-red-200" do %>
-              <span>✖ Remove</span>
-            <% end %>
-          </td>
+  <div class="overflow-auto relative">
+    <table class="w-full sm:w-10/12 table-auto bg-white border-collapse">
+      <thead>
+        <tr>
+          <th class="bg-indigo-100 border text-left px-8 py-4">Email</th>
+          <th class="bg-indigo-100 border text-left px-8 py-4">Role</th>
+          <th class="bg-indigo-100 border text-left px-8 py-4">Actions</th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% for assignment in @assignments %>
+          <tr class="hover:bg-gray-50 focus:bg-gray-100"
+        tabindex="0">
+            <td class="border px-8 py-4"><%= assignment.user.email %></td>
+            <td class="border px-8 py-4"><%= t("roles.#{assignment.role}") %></td>
+            <td class="border px-8 py-4">
+              <%= button_to assignment_path(assignment), method: :delete, form: { data: { turbo_confirm: "Are you sure you want to remove #{assignment.user.email} from your organisation?" } }, form_class: "inline-block", class: "inline-block mr-2 cursor-pointer px-2 py-1 rounded bg-red-100 text-red-800 hover:bg-red-200" do %>
+                <span>✖ Remove</span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
 
-      <% if @assignments.blank? %>
-        <tr><td colspan="3" class="bg-gray-50 w-full py-6 px-8"><em>No user accounts found</em></td></tr>
-      <% end %>
-    </tbody>
-  </table>
+        <% if @assignments.blank? %>
+          <tr><td colspan="3" class="bg-gray-50 w-full py-6 px-8"><em>No user accounts found</em></td></tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <hr class="my-8"/>
-
 
 <div class="mb-12">
   <h3 class="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6">Projects</h3>
@@ -59,6 +60,7 @@
   <%= link_to "Start a new project", new_organisation_project_path(@organisation), class: "px-2 py-1 rounded cursor-pointer bg-emerald-100 text-emerald-900 hover:bg-emerald-800 hover:text-white" %>
 </div>
 
+<hr class="my-8"/>
 
 <div>
   <%= link_to "Back to organisations", organisations_path, class: "mr-2 cursor-pointer text-indigo-800 hover:underline" %>

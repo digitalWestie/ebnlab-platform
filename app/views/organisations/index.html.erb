@@ -8,26 +8,30 @@
   <% end %>
 </div>
 
-<table class="w-full sm:w-10/12 table-fixed bg-white border-collapse">
-  <thead>
-    <tr>
-      <th class="bg-indigo-100 border text-left px-8 py-4">Name</th>
-      <th class="bg-indigo-100 border text-left px-8 py-4">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @organisations.each do |organisation| %>
-      <tr class="hover:bg-gray-50 focus:bg-gray-300 active:bg-red-200"
-    tabindex="0">
-        <td class="w-4/12 border px-8 py-4"><%= organisation.name %></td>
-        <td class="w-8/12 border px-8 py-4">
-          <%= link_to "View", organisation, class: "mr-2 cursor-pointer px-2 py-1 rounded bg-indigo-100 text-indigo-800 hover:bg-indigo-200 inline-block" %>
-          <%= link_to "Edit", edit_organisation_path(organisation), class: "mr-2 cursor-pointer px-2 py-1 rounded bg-orange-100 text-orange-800 hover:bg-orange-200 inline-block" %>
-          <%= button_to organisation, method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, form_class: "inline-block", class: "inline-block mr-2 cursor-pointer px-2 py-1 rounded bg-red-100 text-red-800 hover:bg-red-200" do %>
-            <span>✖ Delete</span>
-          <% end %>
-        </td>
+<div class="overflow-auto relative">
+  <table class="w-full sm:w-10/12 table-auto bg-white border-collapse">
+    <thead>
+      <tr>
+        <th class="bg-indigo-100 border text-left px-8 py-4">Name</th>
+        <th class="bg-indigo-100 border text-left px-8 py-4">User accounts</th>
+        <th class="bg-indigo-100 border text-left px-8 py-4">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @organisations.each do |organisation| %>
+        <tr class="hover:bg-gray-50 focus:bg-gray-300 active:bg-red-200"
+      tabindex="0">
+          <td class="border px-8 py-4"><%= organisation.name %></td>
+          <td class="border px-8 py-4 text-center"><%= organisation.assignments.count %></td>
+          <td class="border px-8 py-4">
+            <%= link_to "View", organisation, class: "mr-2 cursor-pointer px-2 py-1 rounded bg-indigo-100 text-indigo-800 hover:bg-indigo-200 inline-block" %>
+            <%= link_to "Edit", edit_organisation_path(organisation), class: "mr-2 cursor-pointer px-2 py-1 rounded bg-orange-100 text-orange-800 hover:bg-orange-200 inline-block" %>
+            <%= button_to organisation, method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, form_class: "inline-block", class: "inline-block mr-2 cursor-pointer px-2 py-1 rounded bg-red-100 text-red-800 hover:bg-red-200" do %>
+              <span>✖ Delete</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
