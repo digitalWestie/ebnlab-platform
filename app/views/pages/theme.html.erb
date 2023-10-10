@@ -52,6 +52,35 @@
     </div>
   </fieldset>
 
+
+  <hr class=" my-6" />
+  <h2 class="text-3xl mb-6">Tables</h2>
+
+  <table class="w-full sm:w-10/12 table-fixed bg-white border-collapse">
+    <thead>
+      <tr>
+        <th class="bg-indigo-100 border text-left px-8 py-4">Name</th>
+        <th class="bg-indigo-100 border text-left px-8 py-4">Email</th>
+        <th class="bg-indigo-100 border text-left px-8 py-4">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% [{ n: "horse red", e: "n@hneigh.com" }, { n: "horse yellow", e: "yh@hello.com" }, { n: "horse vermillion", e: "vxv@horse.com" }].each do |item| %>
+        <tr class="hover:bg-gray-50 focus:bg-gray-200"
+      tabindex="0">
+          <td class="w-4/12 border px-8 py-4"><%= item[:n] %></td>
+          <td class="w-4/12 border px-8 py-4"><%= item[:e] %></td>
+          <td class="w-4/12 border px-8 py-4">
+            <%= link_to "View", '#', class: "mr-2 cursor-pointer px-2 py-1 rounded bg-indigo-100 text-indigo-800 hover:bg-indigo-200" %>
+            <%= link_to "Edit", '#', class: "mr-2 cursor-pointer px-2 py-1 rounded bg-orange-100 text-orange-800 hover:bg-orange-200" %>
+            <%= link_to "✖ Delete", '#', class: "inline-block mr-2 cursor-pointer px-2 py-1 rounded bg-red-100 text-red-800 hover:bg-red-200" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
   <hr class=" my-6" />
   <h2 class="text-3xl mb-6">Inputs</h2>
 

@@ -3,3 +3,6 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+
+import AssignmentFormController from "./assignment_form_controller"
+application.register("assignment-form", AssignmentFormController)

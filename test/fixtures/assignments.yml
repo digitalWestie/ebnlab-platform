@@ -4,8 +4,10 @@ one:
   user: one
   assignable: one
   assignable_type: Project
+  role: "collaborator"
 
 two:
   user: two
   assignable: two
   assignable_type: Project
+  role: "collaborator"

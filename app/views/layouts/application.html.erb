@@ -23,31 +23,27 @@
   </head>
 
   <body class="text-base sm:text-lg min-h-screen bg-off-white">
-    <div class="bg-gray-900">
-      <div class="max-w-screen-lg mx-auto py-3 px-3 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between flex-wrap">
-
-          <div class="flex-1 flex items-center">
-            <p class="ml-3 font-medium text-white truncate">
-              <% if current_user %>
-                <%= link_to 'Profile', edit_user_registration_path %> |
-                <%= button_to 'Sign out', destroy_user_session_path, method: "delete", class: "text-white" %>
-              <% else %>
-                <%= link_to 'Sign in', new_user_session_path %>
-              <% end %>
-            </p>
-          </div>
-
-          <div class="mt-2 order-3 w-full sm:mt-0 sm:w-auto">
-            <div class="rounded-md shadow-sm">
-              <span class="flex items-center justify-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-gray-500">
-                RAILS_ENV = <%= Rails.env %>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <nav class="py-8 w-full bg-gray-900 grid place-items-center font-medium text-white truncate">
+      <ul class="flex flex-row justify-end w-11/12 sm:w-10/12 lg:w-9/12 xl:w-8/12">
+        <% if current_user %>
+          <li class="inline-block ml-4"><%= link_to edit_user_registration_path, class: "hover:underline flex flex-row items-center" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg><span>Account</span>
+            <% end %>
+          </li>
+          <li class="inline-block ml-4"><%= button_to destroy_user_session_path, method: "delete", class: "hover:underline flex flex-row items-center" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+              </svg>
+              <span>Sign out</span>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="inline-block ml-4"><%= link_to 'Sign in', new_user_session_path, class: "hover:underline" %></li>
+        <% end %>
+      </ul>
+    </nav>
 
     <% if notice or alert %>
       <div class="w-full py-6 flex flex-row align-items justify-center items-center justify-items-center bg-orange-50 text-orange-950 border-b border-yellow-700">
@@ -56,9 +52,11 @@
       </div>
     <% end %>
 
-    <main class="w-full py-10 mb-10 px-5 sm:px-10">
-      <%= yield %>
-    </main>
+    <div class="grid place-items-center">
+      <main class="py-10 mb-10 w-11/12 sm:w-10/12 lg:w-9/12 xl:w-8/12">
+        <%= yield %>
+      </main>
+    </div>
 
     <footer class="text-center fixed inset-x-0 bottom-0 pb-6 h-10 w-full bg-gray-900 text-white">
     </footer>

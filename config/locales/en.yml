@@ -31,6 +31,9 @@
 
 en:
   ebn_lab: "EBN Lab"
+  roles:
+    collaborator: "Collaborator"
+    admin: "Admin"
   activerecord:
     attributes:
       project:

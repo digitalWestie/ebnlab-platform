@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
+  get "/users/search", to: "users#search", as: "user_search"
+
   resources :organisations do
     resources :projects
   end
+
+  resources :assignments, except: :index
 
   resources :projects, only: [] do
     resources :problems

@@ -1,0 +1,19 @@
+<h1>New Assignment</h1>
+
+<%= form_with(model: [@assignable, @assignment], url: assignments_path(assignable_id: @assignable.id, assignable_type: @assignable.class.name.downcase)) do |form| %>
+
+  <div data-controller="assignment-form">
+    <%= form.hidden_field :assignable_type, value: @assignable.class.to_s %>
+    <%= form.hidden_field :assignable_id, value: @assignable.id.to_s %>
+
+    <%= form.label :email, "User email", class: "block font-bold py-2" %>
+    <%= form.text_field :email, list: "user-datalist", data: { "assignment-form-target" => "emailInput" }, class: "mb-6 px-4 py-3 w-full border border-indigo-200 rounded-md ring-0 ring-offset-1 outline-0 outline-none ring-indigo-200 focus:ring-1 focus:border-indigo-600" %>
+
+    <%#= form.hidden_field :user_id, data: { "assignment-form-target" => "userIdInput" } %>
+    <datalist id="user-datalist" data-assignment-form-target="datalist">
+      <!-- Populated via assignment_form_controller.js -->
+    </datalist>
+  </div>
+
+  <%= form.submit 'Assign User', class: "btn btn-primary" %>
+<% end %>
