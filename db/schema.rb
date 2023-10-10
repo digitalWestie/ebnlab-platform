@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_06_120843) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_155052) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "assignable_type", null: false
+    t.bigint "assignable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assignable_type", "assignable_id"], name: "index_assignments_on_assignable"
+    t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
 
   create_table "evidence_items", force: :cascade do |t|
     t.string "name"
@@ -101,6 +111,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_120843) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "assignments", "users"
   add_foreign_key "evidence_links", "evidence_items"
   add_foreign_key "outcomes", "projects"
   add_foreign_key "populations", "projects"

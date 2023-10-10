@@ -4,4 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :assignments, dependent: :destroy
+  has_many :projects, through: :assignments, source: :assignable, source_type: "Project"
+  has_many :organisations, through: :assignments, source: :assignable, source_type: "Organisation"
+
 end
