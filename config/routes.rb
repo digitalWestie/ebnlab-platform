@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :projects
   end
 
-  resources :assignments, except: :index
+  resources :assignments, except: [:index, :update] do
+    member { patch 'rerole' }
+  end
 
   resources :projects, only: [] do
     resources :problems
