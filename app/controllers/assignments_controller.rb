@@ -3,14 +3,11 @@ class AssignmentsController < ApplicationController
   before_action :set_assignable, only: [:new, :index]
 
   def index
-    @assignments = @assignable.assignments
+    @assignments = @assignable.assignments.order(:id)
   end
 
   def new
     @assignment = Assignment.new(assignable: @assignable)
-    respond_to do |format|
-      format.html { render }
-    end
   end
 
   def create

@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @assignments = @project.assignments.all
+    @assignments = @project.assignments.order(:id).includes(:user).all
   end
 
   def new

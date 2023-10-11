@@ -7,7 +7,7 @@ class OrganisationsController < ApplicationController
   end
 
   def show
-    @assignments = @organisation.assignments.includes(:user)
+    @assignments = @organisation.assignments.order(:id).includes(:user).all
   end
 
   def new
