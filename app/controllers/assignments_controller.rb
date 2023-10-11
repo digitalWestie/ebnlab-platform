@@ -57,8 +57,8 @@ class AssignmentsController < ApplicationController
     cleaned = params.require(:assignment).permit(:user_id, :email, :assignable_type, :assignable_id)
     email = cleaned.delete(:email)
     unless email.blank?
-      user = User.find_by!(email: email)
-      cleaned[:user_id] = user.id
+      user = User.find_by(email: email)
+      cleaned[:user_id] = user.try(:id)
     end
     cleaned
   end
