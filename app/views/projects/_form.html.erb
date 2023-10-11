@@ -1,15 +1,6 @@
 <%= form_with(model: [@organisation, project]) do |form| %>
-  <% if project.errors.any? %>
-    <div class="mb-8 w-fit px-8 py-4 bg-red-100 text-red-900 border rounded border-red-900">
-      <h2 class="font-bold"><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul class="list-disc px-4">
-        <% project.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: 'shared/form_errors', locals: { resource: project } %>
 
   <div class="mb-8">
     <div class="">

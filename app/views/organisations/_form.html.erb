@@ -1,15 +1,6 @@
 <%= form_with(model: organisation) do |form| %>
-  <% if organisation.errors.any? %>
-    <div class="mb-8 w-fit px-8 py-4 bg-red-100 text-red-900 border rounded border-red-900">
-      <h2 class="font-bold"><%= pluralize(organisation.errors.count, "error") %> prohibited this organisation from being saved:</h2>
 
-      <ul class="list-disc px-4">
-        <% organisation.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: 'shared/form_errors', locals: { resource: organisation } %>
 
   <div class="mb-8">
     <%= form.label :name, class: "block font-bold py-2" %>

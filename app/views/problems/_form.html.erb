@@ -1,15 +1,6 @@
 <%= form_with(model: [@project, problem]) do |form| %>
-  <% if problem.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(problem.errors.count, "error") %> prohibited this problem from being saved:</h2>
 
-      <ul>
-        <% problem.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: 'shared/form_errors', locals: { resource: problem } %>
 
   <div>
     <%= form.label :name, style: "display: block" %>
