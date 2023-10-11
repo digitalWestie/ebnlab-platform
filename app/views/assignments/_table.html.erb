@@ -1,0 +1,21 @@
+<div class="w-full bg-white border rounded">
+  <div class="flex bg-indigo-100">
+    <div class="w-1/3 border-b border-r px-8 py-4">Email</div>
+    <div class="w-1/3 border-b border-r px-8 py-4">Role</div>
+    <div class="w-1/3 border-b px-8 py-4">Actions</div>
+  </div>
+
+  <div class="divide-y">
+    <%= turbo_frame_tag "assignments" do %>
+      <% for assignment in assignments %>
+        <%= render partial: "assignments/assignment", locals: { assignment: assignment } %>
+      <% end %>
+
+      <% if assignments.blank? %>
+        <div id="no_assignments_message" class="flex">
+          <div class="w-full py-6 px-8 bg-gray-50"><em>No team accounts found</em></div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -18,6 +18,24 @@
 <hr class="my-8"/>
 
 <div>
+  <div class="flex flex-row items-center justify-between mb-6">
+    <h3 class="text-lg sm:text-xl md:text-2xl lg:text-3xl">Team</h3>
+    <%= link_to new_assignment_path(project_id: @project.id), data: { turbo_frame: "new_assignment" }, class: "cursor-pointer text-base sm:text-lg inline-block w-content border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:shadow-outline flex flex-row items-center" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-1 inline-block">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      </svg><span>Add team member</span>
+    <% end %>
+  </div>
+
+  <%= turbo_frame_tag "new_assignment", class: "block mt-12" do %>
+  <% end %>
+
+  <%= render partial: "assignments/table", locals: { assignments: @assignments } %>
+</div>
+
+<hr class="my-8"/>
+
+<div>
   <%= link_to "Edit project details", edit_organisation_project_path(@organisation, @project), class: "mr-2 cursor-pointer text-indigo-800 hover:underline" %>
   <%= link_to "Back to organisation", organisation_projects_path(@organisation), class: "mr-2 cursor-pointer text-indigo-800 hover:underline" %>
 </div>

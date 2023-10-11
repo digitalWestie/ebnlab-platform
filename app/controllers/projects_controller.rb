@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @assignments = @project.assignments.all
   end
 
   def new

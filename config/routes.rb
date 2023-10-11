@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :projects
   end
 
-  resources :assignments, except: [:index, :update] do
+  resources :assignments, except: [:update] do
     member { patch 'rerole' }
   end
 

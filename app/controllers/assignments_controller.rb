@@ -1,18 +1,28 @@
 class AssignmentsController < ApplicationController
   before_action :authenticate_user!, except: []
-  before_action :set_assignable, only: :new
+  before_action :set_assignable, only: [:new, :index]
+
+  def index
+    @assignments = @assignable.assignments
+  end
 
   def new
     @assignment = Assignment.new(assignable: @assignable)
+    respond_to do |format|
+      format.html { render }
+    end
   end
 
   def create
     @assignment = Assignment.new(assignment_params)
     @assignable = @assignment.assignable
     if @assignment.save
-      redirect_to appropriate_assignable_path(@assignment.assignable), notice: 'Team member was successfully assigned.'
+      respond_to do |format|
+        format.html { redirect_to appropriate_assignable_path(@assignment.assignable), notice: 'Team member was successfully assigned.' }
+        format.turbo_stream
+      end
     else
-      render :new
+      render :new, status: :unprocessable_entity, layout: 'application'
     end
   end
 

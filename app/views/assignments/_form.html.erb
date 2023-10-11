@@ -1,0 +1,20 @@
+<%= form_with(model: [assignable, assignment], url: assignments_path(assignable_id: assignable.id, assignable_type: assignable.class.name.downcase)) do |form| %>
+
+  <%= render partial: 'shared/form_errors', locals: { resource: assignment } %>
+
+  <div data-controller="assignment-form" class="flex flex-row items-center content-evenly mb-6">
+    <%= form.hidden_field :assignable_type, value: assignable.class.to_s %>
+    <%= form.hidden_field :assignable_id, value: assignable.id.to_s %>
+
+    <%#= form.hidden_field :user_id, data: { "assignment-form-target" => "userIdInput" } %>
+    <datalist id="user-datalist" data-assignment-form-target="datalist" autocomplete="off">
+      <!-- Populated via assignment_form_controller.js -->
+    </datalist>
+
+    <%#= form.label :email, "Email", class: "font-bold mr-2" %>
+    <%= form.text_field :email, list: "user-datalist", data: { "assignment-form-target" => "emailInput" }, class: "px-4 py-3 w-full border border-indigo-200 rounded-md ring-0 ring-offset-1 outline-0 outline-none ring-indigo-200 focus:ring-1 focus:border-indigo-600 mr-2", placeholder: "Type to search email address e.g. xyz@eml.com", autocomplete: "off" %>
+
+    <%= form.submit "Assign to #{assignable.class.name.downcase}", class: "cursor-pointer inline-block border border-emerald-600 bg-emerald-600 text-white rounded-md px-4 py-3 transition duration-500 ease select-none hover:bg-emerald-700 focus:shadow-outline" %>
+  </div>
+
+<% end %>
