@@ -10,7 +10,7 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.new(assignment_params)
     @assignable = @assignment.assignable
     if @assignment.save
-      redirect_to @assignable, notice: 'Team member was successfully assigned.'
+      redirect_to appropriate_assignable_path(@assignment.assignable), notice: 'Team member was successfully assigned.'
     else
       render :new
     end
@@ -19,16 +19,35 @@ class AssignmentsController < ApplicationController
   def destroy
     @assignment = Assignment.find(params[:id])
     @assignment.destroy
-    redirect_to @assignment.assignable, notice: 'Team member was removed.'
+    redirect_to appropriate_assignable_path(@assignment.assignable), notice: 'Team member was removed.'
+  end
+
+  def rerole
+    @assignment = Assignment.find(params[:id])
+    role = @assignment.next_role
+    if @assignment.update(role: role)
+      redirect_to appropriate_assignable_path(@assignment.assignable), notice: "Role changed to #{role}"
+    else
+      msg = @assignment.errors.present? ? @assignment.errors.full_messages[0] : ""
+      redirect_to appropriate_assignable_path(@assignment.assignable), notice: "Role couldn\'t be changed. #{msg}"
+    end
   end
 
   private
 
+  def appropriate_assignable_path(assignable)
+    if assignable.is_a? Organisation
+      organisation_path(assignable)
+    else
+      organisation_project_path(assignable.organisation, assignable)
+    end
+  end
+
   def set_assignable
     if params[:project_id]
-      @assignable = Project.find(params[:project_id]) # Assuming you have a Project model
+      @assignable = Project.find(params[:project_id])
     elsif params[:organisation_id]
-      @assignable = Organisation.find(params[:organisation_id]) # Assuming you have an Organisation model
+      @assignable = Organisation.find(params[:organisation_id])
     else
       raise ActiveRecord::RecordNotFound, "No valid assignable type found."
     end
